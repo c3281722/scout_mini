@@ -1,0 +1,33 @@
+<launch>
+  <arg name="urdf_extras" default="$(find scout_description)/urdf/scout_mini_sensors.urdf.xacro"/>
+
+  <param name="robot_description" command="$(find xacro)/xacro '$(find scout_description)/urdf/scout_mini.urdf.xacro' urdf_extras:=$(arg urdf_extras)" />
+
+  <!-- Joint states & robot description -->
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+  <node name="robot_state_publisher_base" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node pkg="tf2_ros" type="static_transform_publisher"
+      name="livox_imu_tf_pub"
+      args="0 0 0 0 0 0 1 mid360_link livox_frame" />
+
+  <!-- Livox MID360 Driver -->
+  <include file="$(find livox_ros_driver2)/launch_ROS1/rviz_MID360.launch">
+    <arg name="msg_frame_id" value="mid360_link"/>
+    <arg name="rviz_enable" value="false"/>
+  </include>
+  
+  <!-- RealSense D435i Driver -->
+  <include file="$(find realsense2_camera)/launch/scout_d435i.launch">
+    <arg name="enable_pointcloud" value="true"/>
+    <arg name="enable_accel" value="true"/>
+    <arg name="enable_gyro" value="true"/>
+    <arg name="camera" value="D435i"/>
+    <arg name="tf_prefix" value="D435i"/>
+    <arg name="publish_tf" value="false"/>
+  </include>
+
+  
+  <!-- RViz -->
+  <node name="scout_rviz" pkg="rviz" type="rviz" args="-d $(find scout_description)/rviz/scout_mini_model_display.rviz" />
+</launch>
+

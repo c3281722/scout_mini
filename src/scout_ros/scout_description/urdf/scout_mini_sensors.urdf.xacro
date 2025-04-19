@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Sensor Macros -->
+  <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro"/>
+  <xacro:include filename="$(find livox_description)/urdf/mid360.urdf.xacro"/>
+ 
+
+ <!-- RealSense D435i -->
+<xacro:sensor_d435i parent="front_mount" name="D435i" use_nominal_extrinsics="true">
+  <origin xyz="0 0 0.055" rpy="0 0 0"/>
+</xacro:sensor_d435i>
+
+  <!-- MID360 LiDAR -->
+  <xacro:mid360_lidar parent="rear_mount" xyz="0.175 0 0.18" rpy="0 0 0"/>
+
+</robot>
+
