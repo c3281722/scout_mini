@@ -1,0 +1,12 @@
+<package format="2">
+  <name>livox_description</name>
+  <version>0.0.1</version>
+  <description>URDF model of the Livox MID-360</description>
+  <maintainer email="you@example.com">Your Name</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>xacro</depend>
+  <depend>urdf</depend>
+</package>
+
