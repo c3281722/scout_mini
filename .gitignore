@@ -1,20 +1,26 @@
-# Ignore build and devel folders in the workspace
+# Ignore build and development files
 build/
 devel/
-install/        # If you're using `colcon` or Catkin install space
-
-# ROS log files
 log/
+
+# If install space is used (rare with catkin_make, but safe to include)
+install/
+
+# Ignore build folders in individual packages, if they exist
+src/**/build/
 
 # Python cache
 **/__pycache__/
 **/*.pyc
 
-# Ignore hidden files/directories like .DS_Store or .vscode
-.DS_Store
+# IDE / Editor files
 .vscode/
+.idea/
+.DS_Store
 
-# Ignore build folders inside individual packages
-src/**/build/
-
+# CMake specific (sometimes found in subfolders)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
 
