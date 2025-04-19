@@ -1,0 +1,20 @@
+# Ignore build and devel folders in the workspace
+build/
+devel/
+install/        # If you're using `colcon` or Catkin install space
+
+# ROS log files
+log/
+
+# Python cache
+**/__pycache__/
+**/*.pyc
+
+# Ignore hidden files/directories like .DS_Store or .vscode
+.DS_Store
+.vscode/
+
+# Ignore build folders inside individual packages
+src/**/build/
+
+
