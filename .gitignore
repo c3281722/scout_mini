@@ -4,10 +4,6 @@ devel/
 log/
 github_token
 
-# Only ignore specific ROS build folders, not all "build" folders blindly
-*/build/
-!src/*/build/CMakeLists.txt
-
 # If install space is used (rare with catkin_make, but safe to include)
 install/
 
