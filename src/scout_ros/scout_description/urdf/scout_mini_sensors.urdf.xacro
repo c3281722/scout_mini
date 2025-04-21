@@ -1,18 +1,87 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <!-- Sensor Macros -->
+ <!-- Sensor Macros -->
   <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro"/>
   <xacro:include filename="$(find livox_description)/urdf/mid360.urdf.xacro"/>
  
+ <!-- Sensor Platform -->
+ <link name="sensor_platform">
+  <visual>
+   <origin xyz="-0.125 0 -0.012" rpy="0 0 1.5708"/>
+   <geometry>
+     <mesh filename="package://scout_description/meshes/base_plate.stl" scale="0.001 0.001 0.001"/>
+   </geometry>
+   <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+  </visual>
+  <collision>
+      <origin xyz="-0.125 0 -0.012" rpy="0 0 1.5708"/>
+      <geometry>
+        <mesh filename="package://scout_description/meshes/base_plate.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <origin xyz="-0.125 0 -0.012" rpy="0 0 1.5708"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+ </link> 
 
- <!-- RealSense D435i -->
-<xacro:sensor_d435i parent="front_mount" name="D435i" use_nominal_extrinsics="true">
-  <origin xyz="0 0 0.055" rpy="0 0 0"/>
+ <joint name="sensor_platform_joint" type="fixed">
+    <parent link="front_mount"/>
+    <child link="sensor_platform"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="sensor_platform_front">
+  <visual>
+   <origin xyz="-0.08 0 -0.0005" rpy="0 0 -1.5708"/>
+   <geometry>
+     <mesh filename="package://scout_description/meshes/front_block.stl" scale="0.001 0.001 0.001"/>
+   </geometry>
+   <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+  </visual>
+  </link>
+
+  <link name="sensor_platform_rear">
+  <visual>
+   <origin xyz="-0.08 0 -0.008" rpy="0 0 1.5708"/>
+   <geometry>
+     <mesh filename="package://scout_description/meshes/rear_block.stl" scale="0.001 0.001 0.001"/>
+   </geometry>
+   <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+  </visual>
+  </link>
+
+ <!-- Front Block Joint -->
+<joint name="sensor_platform_front_joint" type="fixed">
+  <parent link="sensor_platform"/>
+  <child link="sensor_platform_front"/>
+  <origin xyz="0.08 0 0.01" rpy="0 0 0"/>
+</joint>
+
+<!-- Rear Block Joint -->
+<joint name="sensor_platform_rear_joint" type="fixed">
+  <parent link="sensor_platform"/>
+  <child link="sensor_platform_rear"/>
+  <origin xyz="-0.08 0 0.01" rpy="0 0 0"/>
+</joint>
+
+
+ <!-- RealSense D435i mounted on front block -->
+<xacro:sensor_d435i parent="sensor_platform_front" name="D435i" use_nominal_extrinsics="true">
+  <origin xyz="-0.1 0 0.02" rpy="0 0 0"/>
 </xacro:sensor_d435i>
 
-  <!-- MID360 LiDAR -->
-  <xacro:mid360_lidar parent="rear_mount" xyz="0.175 0 0.18" rpy="0 0 0"/>
+<!-- MID360 LiDAR mounted on rear block -->
+<xacro:mid360_lidar parent="sensor_platform_rear" xyz="-0.04 0 0.06" rpy="0 0 0"/>
+
 
 </robot>
 

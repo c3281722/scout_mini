@@ -26,7 +26,6 @@
     <arg name="publish_tf" value="false"/>
   </include>
 
-  
   <!-- RViz -->
   <node name="scout_rviz" pkg="rviz" type="rviz" args="-d $(find scout_description)/rviz/scout_mini_model_display.rviz" />
 </launch>

@@ -1,0 +1,9 @@
+<launch>
+  <!-- Load sensors and visualization -->
+  <include file="$(find scout_description)/launch/display_sensor_platform.launch" />
+
+  <!-- Start the Scout Mini base driver -->
+  <include file="$(find scout_bringup)/launch/scout_mini_robot_base.launch"/>
+  
+</launch>
+
