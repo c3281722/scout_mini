@@ -73,14 +73,13 @@
   <origin xyz="-0.08 0 0.01" rpy="0 0 0"/>
 </joint>
 
-
  <!-- RealSense D435i mounted on front block -->
 <xacro:sensor_d435i parent="sensor_platform_front" name="D435i" use_nominal_extrinsics="true">
-  <origin xyz="-0.1 0 0.02" rpy="0 0 0"/>
+  <origin xyz="-0.102 0 0.022" rpy="0 0 0"/>
 </xacro:sensor_d435i>
 
 <!-- MID360 LiDAR mounted on rear block -->
-<xacro:mid360_lidar parent="sensor_platform_rear" xyz="-0.04 0 0.06" rpy="0 0 0"/>
+<xacro:mid360_lidar parent="sensor_platform_rear" xyz="-0.04 0 0.063" rpy="0 0 0"/>
 
 
 </robot>
