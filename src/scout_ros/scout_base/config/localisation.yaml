@@ -1,0 +1,38 @@
+ekf_localization_node_local:
+  frequency: 50
+  sensor_timeout: 0.1
+  two_d_mode: false
+  publish_tf: true
+  map_frame: odom
+  odom_frame: odom
+  base_link_frame: base_link
+  world_frame: odom
+
+  odometry0: /lio_odometry
+  odometry0_config: [true, true, true,    # Position XYZ
+                     false, false, false, # Linear velocity
+                     true, true, true,    # Orientation RPY
+                     false, false, false, # Angular velocity
+                     false, false, false] # Accelerations
+  odometry0_queue_size: 10
+
+  imu0: /livox/imu
+  imu0_config: [false, false, false,
+                true, true, true,
+                false, false, false,
+                true, true, true,
+                false, false, false]
+  imu0_queue_size: 10
+
+  use_control: false
+  stamped_control: false
+
+  odometry1: /odom
+  odometry1_config: [true, true, false,   # Position XY
+                     false, false, false, # Linear velocity
+                     false, false, true,  # Orientation Yaw only (2D)
+                     false, false, false,
+                     false, false, false]
+  odometry1_queue_size: 10
+  ignore_zero_covariance: true
+

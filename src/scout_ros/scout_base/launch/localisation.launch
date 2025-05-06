@@ -1,0 +1,10 @@
+<launch>
+  <!-- Load parameters from YAML -->
+  <rosparam command="load" file="$(find scout_base)/config/localisation.yaml" />
+
+  <!-- Start the local EKF -->
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localisation_node_local" output="screen" />
+
+  <!-- Start the global EKF -->
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localisation_node_global" output="screen" />
+</launch>
