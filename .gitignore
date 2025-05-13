@@ -2,6 +2,7 @@
 build/
 devel/
 log/
+rosbags/
 github_token
 
 # If install space is used (rare with catkin_make, but safe to include)

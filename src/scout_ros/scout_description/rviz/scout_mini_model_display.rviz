@@ -7,8 +7,12 @@ Panels:
         - /Global Options1
         - /Status1
         - /Grid1/Offset1
+        - /RobotModel1
         - /PointCloud21
         - /PointCloud22
+        - /Odometry1
+        - /Odometry1/Shape1
+        - /Imu2
       Splitter Ratio: 0.5
     Tree Height: 719
   - Class: rviz/Selection
@@ -163,6 +167,21 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        sensor_platform:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sensor_platform_front:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sensor_platform_rear:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -252,11 +271,56 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
+    - Angle Tolerance: 0.10000000149011612
+      Class: rviz/Odometry
+      Covariance:
+        Orientation:
+          Alpha: 0.5
+          Color: 255; 255; 127
+          Color Style: Unique
+          Frame: Local
+          Offset: 1
+          Scale: 1
+          Value: true
+        Position:
+          Alpha: 0.30000001192092896
+          Color: 204; 51; 204
+          Scale: 1
+          Value: true
+        Value: true
+      Enabled: true
+      Keep: 30
+      Name: Odometry
+      Position Tolerance: 0.10000000149011612
+      Queue Size: 10
+      Shape:
+        Alpha: 1
+        Axes Length: 0.30000001192092896
+        Axes Radius: 0.029999999329447746
+        Color: 255; 25; 0
+        Head Length: 0.30000001192092896
+        Head Radius: 0.10000000149011612
+        Shaft Length: 1
+        Shaft Radius: 0.05000000074505806
+        Value: Axes
+      Topic: /odom
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Class: rviz_plugin_tutorials/Imu
+      Color: 204; 51; 204
+      Enabled: false
+      History Length: 1
+      Name: Imu
+      Queue Size: 10
+      Topic: /D435i/imu
+      Unreliable: false
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -280,7 +344,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.595996618270874
+      Distance: 2.674395799636841
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -296,9 +360,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.34520310163497925
+      Pitch: 0.5952028632164001
       Target Frame: <Fixed Frame>
-      Yaw: 3.3267295360565186
+      Yaw: 4.736734390258789
     Saved: ~
 Window Geometry:
   Displays:

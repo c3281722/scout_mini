@@ -1,2 +1,0 @@
-LIO-Livox:livox_description:livox_ros_driver2:misc/ceres-solver:misc/vicon_bridge:realsense-ros/realsense2_camera:realsense-ros/realsense2_description:scout_ros/scout_base:scout_ros/scout_bringup:scout_ros/scout_description:scout_ros/scout_msgs:ugv_sdk
--G Unix Makefiles -DCATKIN_DEVEL_PREFIX=/home/scout/scout_mini/devel_isolated -DCMAKE_INSTALL_PREFIX=/home/scout/scout_mini/install_isolated

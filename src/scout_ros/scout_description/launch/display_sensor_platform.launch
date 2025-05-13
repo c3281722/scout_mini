@@ -18,12 +18,15 @@
   
   <!-- RealSense D435i Driver -->
   <include file="$(find realsense2_camera)/launch/scout_d435i.launch">
-    <arg name="enable_pointcloud" value="true"/>
+    <arg name="enable_pointcloud" value="true"/>       <!-- disable unless needed -->
     <arg name="enable_accel" value="true"/>
     <arg name="enable_gyro" value="true"/>
+    <arg name="enable_color" value="true"/>
+    <arg name="enable_depth" value="true"/>
+    <arg name="enable_infra1" value="false"/>
+    <arg name="enable_infra2" value="false"/>
+    <arg name="publish_tf" value="true"/>
     <arg name="camera" value="D435i"/>
-    <arg name="tf_prefix" value="D435i"/>
-    <arg name="publish_tf" value="false"/>
   </include>
 
   <!-- RViz -->

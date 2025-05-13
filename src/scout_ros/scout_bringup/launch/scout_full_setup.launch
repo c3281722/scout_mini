@@ -1,9 +1,13 @@
 <launch>
-  <!-- Load sensors and visualization -->
+  <!-- Define pub_tf so it can be passed downstream -->
+  <arg name="pub_tf" default="true" />
+
+  <!-- Load sensors, visualization and localisation -->
   <include file="$(find scout_description)/launch/display_sensor_platform.launch" />
+  <include file="$(find scout_description)/launch/sensors_ekf.launch" />
 
   <!-- Start the Scout Mini base driver -->
-  <include file="$(find scout_bringup)/launch/scout_mini_robot_base.launch"/>
-  
+  <include file="$(find scout_bringup)/launch/scout_mini_robot_base.launch">
+    <arg name="pub_tf" value="$(arg pub_tf)" />
+  </include>
 </launch>
-
